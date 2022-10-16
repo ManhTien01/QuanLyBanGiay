@@ -1,0 +1,188 @@
+<div class="grid wide">
+  <div class="row-df sm-gutter content">
+    <div class="col-df l-2 m-0 c-0">
+      <nav class="category">
+        <h3 class="category__heading">Danh mục </h3>
+
+        <ul class="category-list">
+          <li class="category-item ">
+            <a href="/products/create" class="category-item__link">Thêm sản phẩm</a>
+            {{!-- <a href="" class="category-item__link">Giày Sneaker</a> --}}
+          </li>
+          <li class="category-item">
+            <a href="/me/stored/products" class="category-item__link">Cập nhật sản phẩm</a>
+          </li>
+          <li class="category-item">
+            <a href="/me/trash/products" class="category-item__link">Xóa sản phẩm</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-df l-10 m-12 c-12">
+    
+
+      <div class="nav moblie-category">
+        <ul class="moblie-category__list">
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker & boot abc</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="create-product">
+        <a href="/me/stored/products">Danh sách sản phẩm</a>
+        <h3>Sản phẩm đã xóa</h3>
+
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th scope="col-df">#</th>
+              <th scope="col-df">Tên khóa học</th>
+              <th scope="col-df">Trình độ</th>
+              <th scope="col-df" colspan="2">Thời gian xóa</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each products}}
+            <tr>
+              <th scope="row-df">{{sum @index 1}}</th>
+              <td>{{this.name}}</td>
+              <td>{{this.price}}</td>
+              <td>{{this.deletedAt}}</td>
+              <td>
+                <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Khôi phục</a>
+                <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}"
+                  data-target="#delete-product-modal">Xóa vĩnh viễn</a>
+              </td>
+            </tr>
+            {{else}}
+            <tr>
+              <td col-dfspan="5" class="text-center">Thùng rác trống.
+                <a href="/products/create">Đăng khóa học</a>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <!--modal delete products -->
+      <div class="modal fade" id="delete-product-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Hành động này không thể khôi phục. Bạn vẫn muốn xóa khóa học này?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+              <button id="btn-delete-product" type="button" class="btn btn-danger">Xóa vĩnh viễn</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form name="delete-product-form" method="post"></form>
+      <form name="restore-product-form" method="post"></form>
+
+    </div>
+
+
+
+  </div>
+</div>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var productId
+    var deleteForm = document.forms['delete-product-form']
+    var restoreForm = document.forms['restore-product-form']
+    var btnDeleteproduct = document.getElementById('btn-delete-product')
+    var restoreBtn = $('.btn-restore')
+    //When dialog confirm dialog clicked
+    $('#delete-product-modal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget)
+      productId = button.data('id')
+    })
+
+    btnDeleteproduct.onclick = function () {
+      deleteForm.action = '/products/' + productId + '/force?_method=DELETE'
+      deleteForm.submit()
+    }
+
+    //restore click
+    restoreBtn.click(function (e) {
+      e.preventDefault()
+      var productId = $(this).data('id')
+      restoreForm.action = '/products/' + productId + '/restore/?_method=PATCH'
+      restoreForm.submit()
+    })
+
+  })
+
+
+
+
+</script>

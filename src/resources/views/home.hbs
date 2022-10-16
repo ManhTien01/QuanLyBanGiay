@@ -1,0 +1,131 @@
+<div class="grid wide">
+    <div class="row-df sm-gutter content">
+        <div class="col-df l-2 m-0 c-0">
+            <nav class="category">
+                <h3 class="category__heading">Danh mục </h3>
+
+                <ul class="category-list">
+                    <li class="category-item ">
+                        <a href="" class="category-item__link">Giày Sneaker</a>
+                    </li>
+                    <li class="category-item">
+                        <a href="" class="category-item__link">Giày Chelsea Boot</a>
+                    </li>
+                    <li class="category-item">
+                        <a href="" class="category-item__link">Giày thể thao</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-df l-10 m-12 c-12">
+            {{> fillter}}
+
+            <div class="nav moblie-category">
+                <ul class="moblie-category__list">
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker & boot abc</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li><li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li><li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                    <li class="moblie-category__item">
+                        <a href="" class="moblie-category__link">Sneaker</a>
+                    </li>
+                </ul>
+                
+            </div>
+
+            <div class="home-product">
+                <div class="row-df sm-gutter">
+
+                    {{#each products}}
+                        <div class="col-df l-2-4 m-df-4 c-6 home-product-item-wrapper">
+                            <a href="/products/{{this.slug}}" class="home-product-item">
+                                <div class="home-product-item__img" style="background-image: url({{this.avatar}});"></div>
+                                <h4 class="home-product-item__name">{{this.name}}, {{this.des}} </h4>
+                                <div class="home-product-item__price">
+                                    <span class="home-product-item__price-old">{{this.price_old}}đ</span>
+                                    <span class="home-product-item__price-new">{{this.price_new}}đ</span>
+                                </div>
+                                <div class="home-product-item__action">
+                                    <span class="home-product-item__like home-product-item__liked">
+                                        <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                                        <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                                    </span>
+                                    <div class="home-product-item__ratting">
+                                        <i class="homer-product-item__star--gold fa-solid fa-star"></i>
+                                        <i class="homer-product-item__star--gold fa-solid fa-star"></i>
+                                        <i class="homer-product-item__star--gold fa-solid fa-star"></i>
+                                        <i class="homer-product-item__star--gold fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="home-product-item__sold">{{this.sold}} Đã bán</span>
+                                </div>
+                                <div class="home-product-item__origin">
+                                    <span class="home-product-item__brand">{{this.brand}}</span>
+                                    <span class="home-product-item__origin-name">{{this.origin}}</span>
+
+                                </div>
+                                <div class="home-product-item__favorite">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span>Yêu thích</span>
+                                </div>
+                                <div class="home-product-item__sale-off">
+                                    <span class="home-product-item__sale-off-percent">{{this.discount}}%</span>
+                                    <span class="home-product-item__sale-off-laybel">GIẢM</span>
+                                </div>
+                            </a>   
+                            
+                        </div>
+                    {{/each}}
+
+                </div>
+            </div>
+
+            {{> pagination}}
+        </div>
+    </div>
+</div>

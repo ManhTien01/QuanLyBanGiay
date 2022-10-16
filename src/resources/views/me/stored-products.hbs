@@ -1,0 +1,248 @@
+<div class="grid wide">
+  <div class="row-df sm-gutter content">
+    <div class="col-df l-2 m-0 c-0">
+      <nav class="category">
+        <h3 class="category__heading">Danh mục </h3>
+
+        <ul class="category-list">
+          <li class="category-item ">
+            <a href="/products/create" class="category-item__link">Thêm sản phẩm</a>
+            {{!-- <a href="" class="category-item__link">Giày Sneaker</a> --}}
+          </li>
+          <li class="category-item">
+            <a href="/me/stored/products" class="category-item__link">Cập nhật sản phẩm</a>
+          </li>
+          <li class="category-item">
+            <a href="/me/trash/products" class="category-item__link">Xóa sản phẩm</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-df l-10 m-12 c-12">
+      
+
+      <div class="nav moblie-category">
+        <ul class="moblie-category__list">
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker & boot abc</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+          <li class="moblie-category__item">
+            <a href="" class="moblie-category__link">Sneaker</a>
+          </li>
+        </ul>
+
+      </div>
+      <form name="container-form" class="stored-products" method="POST" action="/products/handle-form-actions">
+        <h1> Sản phẩm của tôi</h1>
+
+        <a class="stored-trash" href="/me/trash/products">
+          <div>
+           <i class="fa-solid fa-trash-can"></i>
+            <span class="stored-trash-count">{{deletedCount}}</span>
+            </div>
+          
+          
+        </a>
+
+        <div class="mt-4 d-flex align-items-center">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+            <label class="form-check-label" for="checkbox-all">
+              Chọn tất cả
+            </label>
+          </div>
+          <select class="form-control checkbox-select-all-option" name="action" required>
+            <option value="">-- Chọn hành động --</option>
+            <option value="delete">Xóa</option>
+          </select>
+
+          <button class="button btn btn-primary btn-small btn-check-all-submit" disabled>Thực hiện</button>
+        </div>
+
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th scope="col" colspan="2">#</th>
+              <th scope="col">
+                Tên sản phẩm
+                {{{sortable 'name' _sort}}}
+              </th>
+              <th scope="col">
+                Giá
+                {{{sortable 'price_new' _sort}}}
+
+              </th>
+              <th scope="col" colspan="2">
+                Thời gian tạo
+                {{{sortable 'createdAt' _sort}}}
+
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each products}}
+            <tr>
+              <td>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="productIDs[]" value="{{this._id}}">
+                </div>
+              </td>
+              <th scope="row">{{sum @index 1}}</th>
+              <td>{{this.name}}</td>
+              <td>{{this.price_new}}</td>
+              <td>{{this.createdAt}}</td>
+              <td>
+                <a href="/products/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}"
+                  data-target="#delete-course-modal">Xóa</a>
+              </td>
+            </tr>
+            {{else}}
+            <tr>
+              <td colpan="5" class="text-center">Bạn chưa đăng khóa học nào.
+                <a href="/products/create">Đăng khóa học</a>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </form>
+
+
+
+      <!--modal delete products -->
+      <div class="modal fade" id="delete-course-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Bạn có muốn xóa khóa học này không?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+              <button id="btn-delete-course" type="button" class="btn btn-danger">Xóa bỏ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{!-- delete hidden-form --}}
+      <form name="delete-course-form" method="post"></form>
+
+    
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var courseId
+    var deleteForm = document.forms['delete-course-form']
+    var containerForm = $('form[name="container-form"]')
+    // var containerForm = document.forms['container-form']
+    var btnDeleteCourse = document.getElementById('btn-delete-course')
+    var checkboxAll = $('#checkbox-all')
+    var courseItemCheckbox = $('input[name="productIDs[]"]')
+    var btnCheckAllSubmit = $('.btn-check-all-submit')
+
+
+    //When dialog confirm dialog clicked
+    $('#delete-course-modal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget)
+      courseId = button.data('id')
+    })
+
+    btnDeleteCourse.onclick = function () {
+      deleteForm.action = '/products/' + courseId + '?_method=DELETE'
+      deleteForm.submit()
+    }
+
+
+    //checkboxAll changed
+    checkboxAll.change(function () {
+      var isCheckedAll = $(this).prop('checked')
+      courseItemCheckbox.prop('checked', isCheckedAll)
+      renderCheckAllSubmitBtn()
+    })
+
+    //course item checkbox changed
+    courseItemCheckbox.change(function () {
+      var isCheckedAll = courseItemCheckbox.length === $('input[name="productIDs[]"]:checked').length
+      checkboxAll.prop('checked', isCheckedAll)
+      renderCheckAllSubmitBtn()
+
+    })
+
+
+    //
+
+
+
+    function renderCheckAllSubmitBtn() {
+      var checkedCount = $('input[name="productIDs[]"]:checked').length
+      if (checkedCount > 0) {
+        btnCheckAllSubmit.attr('disabled', false)
+      } else {
+        btnCheckAllSubmit.attr('disabled', true)
+      }
+    }
+  })
+</script>
