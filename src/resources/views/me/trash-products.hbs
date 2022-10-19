@@ -88,18 +88,18 @@
         <table class="table mt-4">
           <thead>
             <tr>
-              <th scope="col-df">#</th>
-              <th scope="col-df">Tên khóa học</th>
-              <th scope="col-df">Trình độ</th>
-              <th scope="col-df" colspan="2">Thời gian xóa</th>
+              <th scope="col">#</th>
+              <th scope="col">Tên khóa học</th>
+              <th scope="col">Giá</th>
+              <th scope="col" colspan="2">Thời gian xóa</th>
             </tr>
           </thead>
           <tbody>
             {{#each products}}
             <tr>
-              <th scope="row-df">{{sum @index 1}}</th>
+              <th scope="row">{{sum @index 1}}</th>
               <td>{{this.name}}</td>
-              <td>{{this.price}}</td>
+              <td>{{this.price_old}}</td>
               <td>{{this.deletedAt}}</td>
               <td>
                 <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Khôi phục</a>
@@ -109,7 +109,7 @@
             </tr>
             {{else}}
             <tr>
-              <td col-dfspan="5" class="text-center">Thùng rác trống.
+              <td colspan="5" class="text-center">Thùng rác trống.
                 <a href="/products/create">Đăng khóa học</a>
               </td>
             </tr>

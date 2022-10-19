@@ -22,7 +22,7 @@ class ProductsController {
 
     // [Post] /products/store
     store(req, res,next) {
-         
+        req.body.price_new = req.body.price_old - req.body.price_old * req.body.discount/100
         const product = new Product(req.body)
         product.save()
             .then(() => res.redirect('/me/stored/products'))
@@ -30,7 +30,7 @@ class ProductsController {
 
     }
 
-    // [GET] /courses/:id/edit
+    // [GET] /products/:id/edit
     edit(req, res,next) {
         Product.findById(req.params.id)
             .then(product => res.render('products/edit',{
