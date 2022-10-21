@@ -2,14 +2,13 @@
 
 <div class="grid wide">
     <div class="grid__full-width product-direction">
-        <a href="" class="button_link">Shopee </a>
+        <a href="" class="button_link">Shoes </a>
         <div class="product-direction-icon"><i class="fa-solid fa-angle-right"></i></div>
-        <a href="" class="button_link">Giày Dép Nam </a>
+        <a href="" class="button_link">{{product.category}}</a>
         <div class="product-direction-icon"><i class="fa-solid fa-angle-right"></i></div>
-        <a href="" class="button_link">Giày Thể Thao/ Sneakers </a>
+        <a href="" class="button_link">{{product.subcategory}}</a>
         <div class="product-direction-icon"><i class="fa-solid fa-angle-right"></i></div>
-        <p>[ CHIU Sneaker ] Giày thể thao Jordan 1 cổ thấp xám smoke phiên bản cao cấp giày Sneaker jd1 low smoke grey
-            xám</p>
+        <p>{{product.name}}</p>
 
     </div>
     <div class="row-df lg-gutters products-details">
@@ -68,7 +67,7 @@
                 <span class="products-details__body-price-item product-new-price">₫{{product.price_new}}</span>
                 <span class="products-details__body-price-item product-discount-price">{{product.discount}}% GIẢM</span>
             </div>
-            <ul class="products-details__option">
+            <ul class="mt-4 products-details__option">
                 <li class="products-details__body-option products-details__body-discount">
                     <span class="products-details__option-item">Mã giảm giá của shop</span>
                     <span class="product-voucher">50% GIẢM</span>
@@ -123,21 +122,22 @@
                 <li class="products-details__body-option products-details__body-color">
                     <span class="products-details__option-item">Màu sắc</span>
                     <ul class="product-color">
-                        <li class="product-color-item">Xám</li>
-                        <li class="product-color-item">Trắng</li>
-                        <li class="product-color-item">Đen</li>
+                        {{#each product.color}}
+                        <li class="product-color-item">{{this}}</li>
+                        {{/each}}
+                       
 
                     </ul>
                 </li>
                 <li class="products-details__body-option products-details__body-size">
                     <span class="products-details__option-item">Kích cỡ</span>
-                    <span class="product-color-item">37</span>
+                    <ul class="product-size">
+                        {{#each product.size}}
+                        <li class="product-size-item">{{this}}</li>
+                        {{/each}}
 
-                    <span class="product-color-item">38</span>
-                    <span class="product-color-item">39</span>
-                    <span class="product-color-item">40</span>
-                    <span class="product-color-item">41</span>
-                    <span class="product-color-item">42</span>
+                    </ul>
+                   
                 </li>
                 <li class="products-details__body-option products-details__body-amount">
                     <span class="products-details__option-item">Số lượng</span>
@@ -155,7 +155,7 @@
                             </div>
                         </div>
                     </div>
-                    <span>35 sản phẩm có sẵn</span>
+                    <span>{{product.qty}} sản phẩm có sẵn</span>
                 </li>
             </ul>
 

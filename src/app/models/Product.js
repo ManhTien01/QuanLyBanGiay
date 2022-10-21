@@ -15,6 +15,12 @@ const ProductSchema = new Schema({
   price_old: { type: Number, default: 0, require: true },
   price_new: { type: Number, default: 0 },
   discount: { type: Number, default: 0 },
+  color: [String],
+  size: [Number],
+  status: {type: Boolean, default: false},
+  amount: {type: Number, default: 0},
+  qty: {type: Number, default: 0},
+  sold: {type: Number, default:0},
   slug: { type: String, slug: 'name', unique: true },
   deletedAt: { type: Date },
 }, {
