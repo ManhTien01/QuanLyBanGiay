@@ -3,6 +3,9 @@ const path = require('path');
 const morgan = require('morgan');
 const methodOverride = require('method-override')
 const handlebars = require('express-handlebars');
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 const sortMiddleWare = require('./app/middlewares/sortMiddleWare')
 

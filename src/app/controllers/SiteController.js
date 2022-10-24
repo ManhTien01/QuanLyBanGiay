@@ -1,5 +1,4 @@
 const Product = require('../models/Product')
-const Category = require('../models/Category')
 const { mutipleMongooseToObject } = require('../../util/mongoose')
 
 class SiteController {

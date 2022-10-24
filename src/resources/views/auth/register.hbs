@@ -1,0 +1,128 @@
+<header class="grid wide">
+    <div class="auth-form-header">
+
+        <div class="auth-form-header__logo">
+            <a href="/" class="auth-form-header__link">
+                <i class="fa-solid fa-bag-shopping auth-form-header__icon"></i>
+                <span class="auth-form-header__brand">Shoes</span>
+            </a>
+            <h1 class="auth-form-header__title">Đăng ký</h1>
+        </div>
+        <div>
+            <span class="auth-form-header__help">Bạn cần giúp đỡ?</span>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="auth-home-form">
+
+    <div class="grid wide">
+        <div class="row">
+            <div class="col-lg-6 auth-form-des">
+                <i class="fa-solid fa-bag-shopping auth-form__logo-icon"></i>
+                <span class="auth-form__brand">Shoes</span>
+                <span class="auth-form__des">Nền tảng thương mại điện tử</span>
+                <span class="auth-form__description"> yêu thích ở Đông Nam Á & Đài Loan</span>
+            </div>
+            <div class="col-lg-6 auth-form-wrap">
+
+                <form method="post" class="auth-form " id="auth-form" action="/api/users/register">
+                    <div class="auth-form__container">
+
+                        <div class="auth-form__header">
+                            <h3 class="auth-form__heading">Đăng ký
+                            </h3>
+                            <a href="/api/users/userLogin"><span class="auth-form__switch-btn"
+                                    id="auth-form__switch-btn-df-login">Đăng nhập</span></a>
+                        </div>
+
+                        <div class="auth-form__form">
+                            <div class="auth-form__group">
+                                <input id="name" name="name" autocomplete="off" type="text" class="auth-form__input"
+                                    placeholder="Tên đầy đủ">
+                                <span class="form-message"></span>
+                            </div>
+
+                            <div class="auth-form__group">
+                                <input id="email" name="email" autocomplete="off" type="text" class="auth-form__input"
+                                    placeholder="Email của bạn">
+                                <span class="form-message"></span>
+                            </div>
+                            <div class="auth-form__group">
+                                <input id="password" autocomplete="off" name="password" type="password"
+                                    class="auth-form__input" placeholder="Mật khẩu của bạn">
+                                <span class="form-message"></span>
+                            </div>
+                            <div class="auth-form__group">
+                                <input id="password_confirmation" autocomplete="off" name="password_confirmation"
+                                    type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu của bạn">
+                                <span class="form-message"></span>
+                            </div>
+
+                        </div>
+                        <div class="auth-form__controls">
+
+                            <button class="auth-form__register-btn disabled">ĐĂNG KÝ</button>
+
+
+                        </div>
+                        <div class="auth-form__aside">
+                            <p class="auth-form__policy-text">
+                                Bằng việc đăng ký, bạn đã đồng ý với Shoppee về
+                                <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
+                                <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="auth-form__socials">
+                        <a href="" class="auth-form__socials--facebook btn-df btn-df--size-s btn-df--width-icon">
+                            <i class="auth-form__socials-icon fa-brands fa-facebook"></i>
+                            <span class="auth-form__socials-title">
+                                Facebook
+                            </span>
+
+                        </a>
+                        <a href="" class="auth-form__socials--google btn-df btn-df--size-s btn-df--width-icon">
+                            <i class="auth-form__socials-icon fa-brands fa-google"></i>
+                            <span class="auth-form__socials-title">
+                                Google
+                            </span>
+                        </a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="/jscontrol/validation.js"></script>
+
+<script>
+    Validator({
+        form: '#auth-form',
+        formGroupSelector: '.auth-form__group',
+        errorSelector: '.form-message',
+        rules: [
+            Validator.isRequired('#name'),
+            Validator.isRequired('#email'),
+            Validator.isEmail('#email'),
+            Validator.isRequired('#password'),
+            Validator.isLength('#password', 6),
+            Validator.isRequired('#password_confirmation'),
+            Validator.isConfirmed('#password_confirmation', function () {
+                return document.querySelector('#auth-form #password').value;
+            }, 'Mật khẩu truyền vào không chính xác')
+
+        ],
+
+    });
+
+
+
+</script>
