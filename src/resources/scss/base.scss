@@ -22,6 +22,11 @@ html {
     box-sizing: border-box;
 }
 
+a:hover{
+  text-decoration: none;
+  // color: rgba(255, 255, 255, 0.05);
+}
+
 .grid__full-width {
     width: 100%;
 }
