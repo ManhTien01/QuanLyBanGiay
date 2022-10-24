@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 
 async function connect(){
     try {
-        await mongoose.connect('mongodb://localhost:27017/QLBG_dev');
+        await mongoose.connect('mongodb://localhost:27017/QLBG_dev',
+        {useNewURLParser: true});
         console.log('connect successfully')
     } catch (error) {
         console.log('connect fail!')
