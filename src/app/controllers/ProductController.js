@@ -16,6 +16,7 @@ class ProductsController {
 
     // [GET] /products/create
     create(req, res,next) {
+        
         res.render('products/create')
 
     }
@@ -40,7 +41,7 @@ class ProductsController {
 
     }
 
-    //Put /courses/:id
+    //Put /products/:id
     update(req, res, next) {
         Product.updateOne({ _id: req.params.id }, req.body)
             .then(() => res.redirect('/me/stored/products'))
@@ -48,7 +49,7 @@ class ProductsController {
     }
 
 
-    //delete /courses/:id
+    //delete /products/:id
     destroy(req, res, next) {
         Product.delete({_id: req.params.id })
             .then(() => res.redirect('back'))
@@ -56,7 +57,7 @@ class ProductsController {
 
     }
 
-    //delete /courses/:id/force
+    //delete /products/:id/force
 
     forceDestroy(req, res, next) {
         Product.deleteOne({_id: req.params.id })
@@ -65,7 +66,7 @@ class ProductsController {
 
     }
 
-    //patch /courses/:id/restore
+    //patch /products/:id/restore
 
     restore(req, res, next) {
         Product.restore({_id: req.params.id })
@@ -73,7 +74,7 @@ class ProductsController {
             .catch(next)
     }
 
-    //post //course/handle-form-actions
+    //post //product/handle-form-actions
     handleFormAction(req, res, next) {
         switch(req.body.action){
             case 'delete': 
